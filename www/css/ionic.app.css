@@ -7708,6 +7708,9 @@ a.button {
 .bar.bar-light{
     background-color:rgba(0,0,0,0.3) !important;
 }*/
+.slider {
+  height: 960px; }
+
 .scroll-content {
   background-image: url(../img/background.png); }
 
