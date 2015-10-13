@@ -77,7 +77,7 @@ angular.module('starter.services', [])
 	        //console.log(tmp);
 	        //console.log(chunk(tmp, 6));
 
-	        return chunk(tmp, 5);
+	        return chunk(tmp, 8);
 	    },
 		getAll: function() {
 			var deferred = $q.defer();

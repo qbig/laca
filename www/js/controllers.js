@@ -98,24 +98,33 @@ angular.module('starter.controllers', [])
   LCCService,
   $ionicSlideBoxDelegate) {
 
-    $scope.products = [];
     var group = "";
+    var stepSlides = 3;
+
+    $scope.slides = [];
+    $scope.products = [];
     $scope.category = $stateParams.category;
 
     //////////////////////////////////////////////////////////////////
 
-    $rootScope.$broadcast('loading:show');
-    
     $localForage.getItem('LCCCategories:' + $scope.category).then(function(scdata) {
       
       if (scdata) {
         $scope.products = JSON.parse(scdata);
+
+        for (var i = 0; i < stepSlides; i++) { 
+          $scope.slides.push($scope.products[i]);
+        }
       }else {
         $localForage.getItem('LCCData').then(function(localdata) {
 
             if (localdata !== null) {
               var sc = LCCService.filterBySubCategory(JSON.parse(localdata), $scope.category);
               $scope.products = sc;
+
+              for (var i = 0; i < stepSlides; i++) { 
+                $scope.slides.push($scope.products[i]);
+              }
             
               $localForage.setItem('LCCCategories:' + $scope.category, JSON.stringify(sc));
 
@@ -124,13 +133,25 @@ angular.module('starter.controllers', [])
             }
         });
       }
-
-      $timeout(function () {  
-        $rootScope.$broadcast('loading:hide');
-      }, 2000);
     });
     
     //////////////////////////////////////////////////////////////////
+
+    $scope.slideHasChanged = function(index) {
+
+      var i = $ionicSlideBoxDelegate.slidesCount();
+
+      if (i > $scope.products.length-1) {
+        return;   
+      }
+
+      $scope.slides.push($scope.products[i]);
+      
+      $timeout(function () {
+        $ionicSlideBoxDelegate.update();
+      });
+      
+    };
 
     $scope.checkSubCat = function (subcat) {
 
@@ -138,7 +159,6 @@ angular.module('starter.controllers', [])
         group = subcat;
         return true;
       }
-
       return false;
     };
 
