@@ -107,17 +107,20 @@ angular.module('starter.controllers', [])
 
     //////////////////////////////////////////////////////////////////
 
+    $rootScope.$broadcast('loading:show');
+    
     $localForage.getItem('LCCCategories:' + $scope.category).then(function(scdata) {
-      
       if (scdata) {
+        $rootScope.$broadcast('loading:hide');
         $scope.products = JSON.parse(scdata);
 
         for (var i = 0; i < stepSlides; i++) { 
           $scope.slides.push($scope.products[i]);
         }
       }else {
-        $localForage.getItem('LCCData').then(function(localdata) {
 
+        $localForage.getItem('LCCData').then(function(localdata) {
+            $rootScope.$broadcast('loading:hide');
             if (localdata !== null) {
               var sc = LCCService.filterBySubCategory(JSON.parse(localdata), $scope.category);
               $scope.products = sc;
