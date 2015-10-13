@@ -7708,8 +7708,17 @@ a.button {
 .bar.bar-light{
     background-color:rgba(0,0,0,0.3) !important;
 }*/
+.bar.bar-stable {
+  background: none !important; }
+
 .slider {
   height: 960px; }
+
+.slider-slide {
+  padding-top: 20px; }
+
+.pad-list {
+  padding-top: 44px; }
 
 .scroll-content {
   background-image: url(../img/background.png); }
