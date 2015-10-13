@@ -1,0 +1,18 @@
+<ion-view view-title="La Casa Cubana" hide-back-button="true">
+
+	<ion-content>
+
+		<div class="list">
+
+		    <a class="item item-thumbnail-left item-category" 
+		    	href="#/app/details/{{category.title}}"
+		    	collection-repeat="category in categories">
+		      
+		      <img ng-src="img/icons/{{category.title}}.jpg">
+		      <h2><strong>{{category.title}}</strong></h2>
+		    </a>
+
+		</div>
+
+  	</ion-content>
+</ion-view>

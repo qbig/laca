@@ -1,0 +1,39 @@
+<ion-view view-title="La Casa Cubana">
+	<ion-content>
+	<br/>
+	<ion-slide-box 
+		show-pager="false"
+		does-continue="true" 
+		ng-if="products.length">
+
+          <ion-slide ng-repeat="prod in products">
+            
+            <div class="list">
+
+				<div ng-repeat="product in prod">
+
+					<div class="item item-divider item-subcategory" ng-if="checkSubCat(product.subcat1);">
+						<h1>{{product.subcat1}}</h1>
+					</div>
+
+				    <div class="item item-text-wrap item-thumbnail-left item-subcategory item-icon-right" 
+				    	href="#">
+				      
+				      <img ng-src="{{product.photo}}">
+				      <h2><strong>{{product.title}}</strong></h2>
+				      <h3><strong>Year: {{product.year}}</strong></h3>
+				      <h3><strong>{{ product.volume !== "" ? "Volume: " + product.volume:"" }}</strong></h3>
+
+					  <i class="icon item-price"><strong>{{product.price}}</strong></i>
+				    </div>
+
+				</div>
+
+			</div>
+			<br/>
+          </ion-slide>
+          
+    </ion-slide-box>
+
+  	</ion-content>
+</ion-view>

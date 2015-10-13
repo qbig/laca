@@ -1,0 +1,86 @@
+/*.bar.bar-header {
+    background-color: transparent;
+    border-bottom-width: 0;
+}
+
+.bar.bar-light{
+    background-color:rgba(0,0,0,0.3) !important;
+}*/
+
+.scroll-content{
+	background-image: url(#{$image-path}/background.png);
+}
+
+.content-background {
+    background: url(#{$image-path}/background.png);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center;
+}
+
+.logo {
+    background: url(#{$image-path}/logo.png);
+    background-repeat: no-repeat;
+    background-size: contain;
+    background-position: center;
+    width: 80%;
+    height: 300px;
+    margin: auto;
+    z-index: 2;
+    position: relative;
+    top: 100px;
+}
+
+.main-title {
+    margin: 20px !important;
+}
+
+.item-category{
+    background:none;
+    border: none;
+
+    display: -webkit-box !important;
+    display: -moz-box !important;
+    display: -ms-flexbox !important;
+    display: -webkit-flex !important;
+    display: flex !important;
+
+    -webkit-box-direction: normal !important;
+    -moz-box-direction: normal !important;
+    -webkit-box-orient: horizontal !important;
+    -moz-box-orient: horizontal !important;
+    -webkit-flex-direction: row !important;
+    -ms-flex-direction: row !important;
+    flex-direction: row !important;
+
+    -webkit-box-pack: justify  !important;
+    -moz-box-pack: justify  !important;
+    -webkit-justify-content: center !important;
+    -ms-flex-pack: justify !important;
+    justify-content: center !important;
+    -webkit-align-content: stretch !important;
+    -ms-flex-line-pack: stretch !important;
+    align-content: stretch !important;
+
+    -webkit-box-align: center !important;
+    -moz-box-align: center !important;
+    -webkit-align-items: center !important;
+    -ms-flex-align: center !important;
+    align-items: center !important;
+
+    .badge{
+        position:initial !important;
+        display: inline !important;
+        top: initial !important;
+        right: initial !important;
+    }
+}
+
+.item-subcategory{
+    background:none;
+    border: none;
+}
+
+.item-price {
+    font-size: 20px !important;
+}
