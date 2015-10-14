@@ -7700,14 +7700,15 @@ a.button {
   -webkit-transition-duration: 0s;
   transition-duration: 0s; }
 
-/*.bar.bar-header {
-    background-color: transparent;
-    border-bottom-width: 0;
-}
+.bar.bar-header {
+  background-color: transparent;
+  border-bottom-width: 0; }
 
+/*
 .bar.bar-light{
     background-color:rgba(0,0,0,0.3) !important;
-}*/
+}
+*/
 .bar.bar-stable {
   background: none !important; }
 
