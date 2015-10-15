@@ -36,20 +36,23 @@ angular.module('starter.services', [])
           result[prop].push(elm);
         });
         return result;
-    }
+    };
 
     var chunk = function (arr, n) {
-	    if ( !arr.length ) {
+    	if ( !arr.length ) {
 	        return [];
 	    }
 	    return [ arr.slice( 0, n ) ].concat( chunk( arr.slice(n), n) );
-	};
+    };
 
 	////////////////////////////////////////////////////////////////////////////
 
 	return {
 
 		////////////////////////////////////////////////////////////////////////////
+		chunkBy: function (arr, n) {
+			return chunk(arr, n);
+		},
 		filterBySubCategory: function(arr, cat) {
 
 	        var t, tmp = [];
@@ -75,9 +78,9 @@ angular.module('starter.services', [])
 	        //console.log(t);
 
 	        //console.log(tmp);
-	        //console.log(chunk(tmp, 6));
+	        //console.log(chunk(tmp, 6)); chunk(tmp, 8);
 
-	        return chunk(tmp, 8);
+	        return tmp;
 	    },
 		getAll: function() {
 			var deferred = $q.defer();

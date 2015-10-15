@@ -17,16 +17,24 @@
 						<h1>{{product.subcat1}}</h1>
 					</div>
 
-				    <div class="item item-text-wrap item-thumbnail-left item-subcategory item-icon-right" 
+					<div class="item item-subcategory sub-detail-image" 
+						ng-if="types[category] !== undefined">
+						<img class="full-image" ng-src="{{product.photo}}">
+					</div>
+
+					<!-- item-thumbnail-left -->
+				    <a class="item item-text-wrap item-subcategory item-icon-right" 
 				    	href="#">
 				      
-				      <img ng-src="{{product.photo}}">
+				      <!--<img ng-src="{{product.photo}}">-->
 				      <h2><strong>{{product.title}}</strong></h2>
 				      <h3><strong>Year: {{product.year}}</strong></h3>
 				      <h3><strong>{{ product.volume !== "" ? "Volume: " + product.volume:"" }}</strong></h3>
 
-					  <i class="icon item-price"><strong>{{product.price}}</strong></i>
-				    </div>
+					  <i class="icon item-price">
+					  	<strong>{{product.price}}</strong>
+					  </i>
+				    </a>
 
 				</div>
 

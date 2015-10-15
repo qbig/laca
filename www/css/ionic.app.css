@@ -7785,3 +7785,12 @@ a.button {
 
 .item-price {
   font-size: 20px !important; }
+
+.sub-detail-image {
+  width: 558px;
+  height: 218px;
+  margin-left: 20px;
+  margin-right: 20px; }
+
+.detail-image {
+  overflow: hidden; }

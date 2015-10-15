@@ -105,6 +105,12 @@ angular.module('starter.controllers', [])
     $scope.products = [];
     $scope.category = $stateParams.category;
 
+    $scope.types = {
+      "Food": 3,
+      "Champagne": 3,
+      "default": 11
+    };
+
     //////////////////////////////////////////////////////////////////
 
     $rootScope.$broadcast('loading:show');
@@ -112,6 +118,8 @@ angular.module('starter.controllers', [])
     $timeout(function () {
       $rootScope.$broadcast('loading:hide');
     }, 300);
+
+    //////////////////////////////////////////////////////////////////
         
     $localForage.getItem('LCCCategories:' + $scope.category).then(function(scdata) {
       if (scdata) {
@@ -127,6 +135,13 @@ angular.module('starter.controllers', [])
             
             if (localdata !== null) {
               var sc = LCCService.filterBySubCategory(JSON.parse(localdata), $scope.category);
+              
+              if ($scope.types[$scope.category] !== undefined) {
+                sc = LCCService.chunkBy(sc, $scope.types[$scope.category]);
+              }else{
+                sc = LCCService.chunkBy(sc, $scope.types["default"]);
+              }
+
               $scope.products = sc;
 
               for (var i = 0; i < stepSlides; i++) { 
