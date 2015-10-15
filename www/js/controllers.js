@@ -161,17 +161,16 @@ angular.module('starter.controllers', [])
 
     $scope.slideHasChanged = function(index) {
 
-      var i = $ionicSlideBoxDelegate.slidesCount();
-
-      if (i > $scope.products.length-1) {
-        return;   
-      }
-
-      $scope.slides.push($scope.products[i]);
-      
       $timeout(function () {
+        var i = $ionicSlideBoxDelegate.slidesCount();
+
+        if (i > $scope.products.length-1) {
+          return;   
+        }
+
+        $scope.slides.push($scope.products[i]);
         $ionicSlideBoxDelegate.update();
-      });
+      }, 300);
       
     };
 
