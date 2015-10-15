@@ -108,7 +108,7 @@ angular.module('starter.controllers', [])
     $scope.types = {
       "Food": 3,
       "Champagne": 3,
-      "default": 11
+      "default": 10
     };
 
     //////////////////////////////////////////////////////////////////
