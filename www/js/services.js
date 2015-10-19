@@ -68,7 +68,7 @@ angular.module('starter.services', [])
 		                volume: arr[i]["Volume"], 
 		                subcat1: arr[i]["Sub-Cat 1"], 
 		                subcat2: arr[i]["Sub-Cat 2"],
-		                photo: "../img/icons/" + cat + ".jpg" 
+		                photo: "img/icons/" + cat + ".jpg" 
 		            });
 	            }
 	        }
