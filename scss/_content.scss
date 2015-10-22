@@ -26,11 +26,11 @@
 }
 
 .scroll-content{
-	background-image: url(#{$image-path}/background.png);
+	background-image: url(#{$image-path}/background.jpg); 
 }
 
 .content-background {
-    background: url(#{$image-path}/background.png);
+    background: url(#{$image-path}/background.jpg);
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
@@ -41,11 +41,11 @@
     background-repeat: no-repeat;
     background-size: contain;
     background-position: center;
-    width: 80%;
+    width: 100%;
     height: 300px;
     margin: auto;
-    z-index: 2;
-    position: relative;
+    z-index: 99999;
+    position: fixed;
     top: 300px;
 }
 
