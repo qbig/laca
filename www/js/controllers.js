@@ -219,7 +219,7 @@ angular.module('starter.controllers', [])
 
         $scope.slides.push($scope.products[i]);
         $ionicSlideBoxDelegate.update();
-      }, 300);
+      }, 50);
       
     };
 
