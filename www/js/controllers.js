@@ -7,8 +7,10 @@ angular.module('starter.controllers', [])
     $scope, 
     $state,
     $timeout,
+    $ionicPlatform,
     $ionicPopup,
-    $ionicLoading) {
+    $ionicLoading,
+    $cordovaFileTransfer) {
 
   // With the new view caching in Ionic, Controllers are only called
   // when they are recreated or on app start, instead of every page change.
@@ -16,7 +18,32 @@ angular.module('starter.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
+  
+  /*
+  $ionicPlatform.ready(function() {
 
+    if (window.cordova) {
+      var _bg = "http://googledrive.com/host/0B4eZhD1V1_ZAa1RvbGlhYzNYaFk/background.jpg";
+
+      $cordovaFileTransfer.download(_bg, window.cordova.file.dataDirectory + "background.jpg", {}, true)
+      .then(function(result) {
+
+
+
+      }, function(err) {
+        // Error
+        $scope.showAlert("Error:" + JSON.stringify(err));
+      }, function (progress) {
+        /*
+        $timeout(function () {
+          $scope.downloadProgress = (progress.loaded / progress.total) * 100;
+        });
+        *
+      });
+    }
+
+  });*/
+  
   ////////////////////////////////////////////////
 
   // Alert dialog
@@ -66,6 +93,8 @@ angular.module('starter.controllers', [])
   $localForage,
   LCCService) {
 
+    $scope.categories = [];
+
     //////////////////////////////////////////////////////////////////
 
     $rootScope.$broadcast('loading:show');
@@ -73,9 +102,25 @@ angular.module('starter.controllers', [])
 
         if (localdata === null) {
 
-          LCCService.getAll().then(function (data) {
+          LCCService.get('/5e8b3d25').then(function (data) {
+            Array.prototype.push.apply($scope.categories, data);
+          });
+
+          LCCService.get('/ad67ffe2').then(function (data) {
+            Array.prototype.push.apply($scope.categories, data);     
+          });
+
+          LCCService.get('/ea4b12d2').then(function (data) {
+            Array.prototype.push.apply($scope.categories, data);      
+          });
+
+          LCCService.get('/b01ca536').then(function (data) {
+            Array.prototype.push.apply($scope.categories, data);     
+          });
+
+          LCCService.get('/d7d1f5a7').then(function (data) {
             $rootScope.$broadcast('loading:hide');
-            $scope.categories = data;       
+            Array.prototype.push.apply($scope.categories, data);       
           });
 
         }else{
@@ -127,7 +172,9 @@ angular.module('starter.controllers', [])
         $scope.products = JSON.parse(scdata);
 
         for (var i = 0; i < stepSlides; i++) { 
-          $scope.slides.push($scope.products[i]);
+          if ($scope.products[i] !== undefined) {
+            $scope.slides.push($scope.products[i]);
+          }
         }
       }else {
 
@@ -145,7 +192,9 @@ angular.module('starter.controllers', [])
               $scope.products = sc;
 
               for (var i = 0; i < stepSlides; i++) { 
-                $scope.slides.push($scope.products[i]);
+                if ($scope.products[i] !== undefined) {
+                  $scope.slides.push($scope.products[i]);
+                }
               }
             
               $localForage.setItem('LCCCategories:' + $scope.category, JSON.stringify(sc));

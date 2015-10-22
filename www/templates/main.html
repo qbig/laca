@@ -6,9 +6,9 @@
 
 		    <a class="item item-thumbnail-left item-category" 
 		    	href="#/app/details/{{category.title}}"
-		    	collection-repeat="category in categories">
+		    	collection-repeat="category in categories | orderBy:'title'">
 		      
-		      <img ng-src="img/icons/{{category.title}}.jpg">
+		      <img ng-cache ng-src="{{category.photo}}">
 		      <h2><strong>{{category.title}}</strong></h2>
 		    </a>
 

@@ -19,7 +19,7 @@
 
 					<div class="item item-subcategory sub-detail-image" 
 						ng-if="types[category] !== undefined">
-						<img class="full-image" ng-src="{{product.photo}}">
+						<img class="full-image" ng-cache ng-src="{{product.photo}}">
 					</div>
 
 					<!-- item-thumbnail-left -->
@@ -28,8 +28,8 @@
 				      
 				      <!--<img ng-src="{{product.photo}}">-->
 				      <h2><strong>{{product.title}}</strong></h2>
-				      <h3><strong>Year: {{product.year}}</strong></h3>
-				      <h3><strong>{{ product.volume !== "" ? "Volume: " + product.volume:"" }}</strong></h3>
+				      <h3><strong>{{product.year !== "" && product.year !== undefined ? "Year: " + product.year:""}}</strong></h3>
+				      <h3><strong>{{ product.volume !== "" && product.volume !== undefined ? "Volume: " + product.volume:"" }}</strong></h3>
 
 					  <i class="icon item-price">
 					  	<h2><strong>{{product.price}}</strong></h2>

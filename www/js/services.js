@@ -2,6 +2,26 @@
 
 angular.module('starter.services', [])
 
+.service('CacheImages', function($q){
+    return {
+        checkCacheStatus : function(src){
+            var deferred = $q.defer();
+            ImgCache.isCached(src, function(path, success) {
+                if (success) {
+                    deferred.resolve(path);
+                } else {
+                    ImgCache.cacheFile(src, function() {
+                        ImgCache.isCached(src, function(path, success) {
+                            deferred.resolve(path);
+                        }, deferred.reject);
+                    }, deferred.reject);
+                }
+            }, deferred.reject);
+            return deferred.promise;
+        }
+    };
+})
+
 .factory('LCCService', ['$q', '$http', 'ApiEndpoint', '$localForage', '$parse', function($q, $http, ApiEndpoint, $localForage, $parse) {
 
 	var filterByUnique = function(arr, key, flag) {
@@ -14,7 +34,7 @@ angular.module('starter.services', [])
 	          tmp.push(current);
 
 	          if (flag) {
-	          	unique.push({title: current});
+	          	unique.push({title: current, photo: "img/icons/placeholder.gif" });
 	          }else{
 	          	unique.push(current);
 	          }
@@ -45,6 +65,15 @@ angular.module('starter.services', [])
 	    return [ arr.slice( 0, n ) ].concat( chunk( arr.slice(n), n) );
     };
 
+    var matchKey = function (objectToSearch, keyToFind) {
+	    for (var k in objectToSearch) {
+	        if ( k.toLowerCase().indexOf(keyToFind.toLowerCase()) !== -1) {
+	            return objectToSearch[k];
+	        }
+	    }
+	    return null;
+	};
+
 	////////////////////////////////////////////////////////////////////////////
 
 	return {
@@ -64,11 +93,11 @@ angular.module('starter.services', [])
 
 	            	tmp.push({title: arr[i]["Item Description"], 
 		                year: arr[i]["Vintage/Year"], 
-		                price: arr[i]["Price/Btl"], 
+		                price: matchKey(arr[i], "price"), 
 		                volume: arr[i]["Volume"], 
 		                subcat1: arr[i]["Sub-Cat 1"], 
 		                subcat2: arr[i]["Sub-Cat 2"],
-		                photo: "www/img/icons/" + cat + ".jpg" 
+		                photo: "img/icons/" + cat + ".jpg" 
 		            });
 	            }
 	        }
@@ -82,16 +111,31 @@ angular.module('starter.services', [])
 
 	        return tmp;
 	    },
-		getAll: function() {
+		get: function(_CHILD) {
 			var deferred = $q.defer();
 
-			$http.get(ApiEndpoint.url + '/5e8b3d25')
+			$http.get(ApiEndpoint.url + _CHILD)
 			.success(function (data) {
 
 				var m = filterByUnique(data.result, "Main Cat", true);
-				
-				$localForage.setItem('LCCCategories', JSON.stringify(m));
-				$localForage.setItem('LCCData', JSON.stringify(data.result));
+
+				$localForage.getItem('LCCCategories').then(function(localdata) {
+
+					if (localdata === null) {
+						$localForage.setItem('LCCCategories', JSON.stringify(m));
+					}else{
+						$localForage.setItem('LCCCategories', JSON.stringify( JSON.parse(localdata).concat(m)));
+					}
+				});
+
+				$localForage.getItem('LCCData').then(function(localdata) {
+
+					if (localdata === null) {
+						$localForage.setItem('LCCData', JSON.stringify(data.result));
+					}else{
+						$localForage.setItem('LCCData', JSON.stringify(JSON.parse(localdata).concat(data.result)));
+					}
+				});
 
 				deferred.resolve(m);
 			})
