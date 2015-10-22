@@ -84,7 +84,7 @@ angular.module('starter', ['ionic',
   });
   // if none of the above states are matched, use this as the fallback
   $urlRouterProvider.otherwise('/app/splashscreen');
-  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel):/);
+  $compileProvider.imgSrcSanitizationWhitelist(/^\s*(https?|ftp|mailto|file|tel|blob|content):|data:image\//);
   
   //$ionicConfigProvider.views.forwardCache(true);
   $sceDelegateProvider.resourceUrlWhitelist(['self', 'https://sheetsu.com/**']);
