@@ -151,8 +151,9 @@ angular.module('starter.controllers', [])
     $scope.category = $stateParams.category;
 
     $scope.types = {
-      "Food": 3,
-      "Champagne": 3,
+      "Appertizers": 3,
+      "Main": 3,
+      "Desserts": 3,
       "default": 10
     };
 

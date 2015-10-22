@@ -15,7 +15,10 @@
   <preference name="android-minSdkVersion" value="16"/>
   <preference name="BackupWebStorage" value="none"/>
   <preference name="AndroidPersistentFileLocation" value="Compatibility"/>
-  <preference name="SplashScreen" value="screen"/>
+  <preference name="ShowSplashScreenSpinner" value="false" />
+  <preference name="AutoHideSplashScreen" value="true" />
+  <preference name="FadeSplashScreen" value="false" />
+  <preference name="SplashScreen" value="none"/>
   <preference name="SplashScreenDelay" value="3000"/>
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
@@ -40,4 +43,5 @@
     <splash src="resources/android/splash/drawable-port-xxhdpi-screen.png" density="port-xxhdpi"/>
     <splash src="resources/android/splash/drawable-port-xxxhdpi-screen.png" density="port-xxxhdpi"/>
   </platform>
+  <icon src="resources/android/icon/drawable-xhdpi-icon.png"/>
 </widget>

@@ -7722,7 +7722,17 @@ a.button {
   padding-top: 44px; }
 
 .scroll-content {
-  background-image: url(../img/background.jpg); }
+  background-image: url(http://playwhile.com/assets/background.jpg?version=1);
+  /* ../img/background.jpg); */ }
+
+.bg-top {
+  top: 0px;
+  position: fixed; }
+
+.bg-top2 {
+  top: 0px;
+  position: fixed;
+  z-index: -2; }
 
 .content-background {
   background: url(../img/background.jpg);

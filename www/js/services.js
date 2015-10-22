@@ -34,7 +34,7 @@ angular.module('starter.services', [])
 	          tmp.push(current);
 
 	          if (flag) {
-	          	unique.push({title: current, photo: "img/icons/placeholder.gif" });
+	          	unique.push({title: current});
 	          }else{
 	          	unique.push(current);
 	          }
@@ -97,7 +97,7 @@ angular.module('starter.services', [])
 		                volume: arr[i]["Volume"], 
 		                subcat1: arr[i]["Sub-Cat 1"], 
 		                subcat2: arr[i]["Sub-Cat 2"],
-		                photo: "img/" + cat + ".jpg" 
+		                photo: arr[i]["image"] 
 		            });
 	            }
 	        }
