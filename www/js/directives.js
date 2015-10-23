@@ -2,6 +2,38 @@
 
 angular.module('starter.directives', ['ionic'])
 
+.directive('bgImage', function () {
+    return function (scope, element, attrs) {
+	    element.css({
+	        'background-image': 'url(' + attrs.contentImage + ')',
+	        'background-size': 'cover',
+	        'background-repeat': 'no-repeat',
+	        'background-position': 'center center'
+	    });
+
+    };
+})
+
+.directive('cacheBackground', function($timeout) {
+    return {
+        restrict: 'A',
+        link: function(scope, el, attrs) {      
+
+        	$timeout(function() {
+        		ImgCache.isBackgroundCached(el, function(path, success) {
+		            if (success) {
+		                ImgCache.useCachedBackground(el);
+		            } else { 
+		                ImgCache.cacheBackground(el, function() {
+		                    ImgCache.useCachedBackground(el);
+		                });
+		            }
+		        });
+        	}, 200);
+        }
+    };
+})
+
 // <img ng-cache ng-src="..." />
 .directive('ngCache', function() {
     return {
@@ -17,7 +49,6 @@ angular.module('starter.directives', ['ionic'])
                         });
                     }
                 });
-
             });
         }
     };

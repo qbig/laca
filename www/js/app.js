@@ -20,6 +20,7 @@ angular.module('starter', ['ionic',
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
     ImgCache.options.debug = false;
+    ImgCache.options.usePersistentCache = true;
     ImgCache.options.chromeQuota = 50*1024*1024;     
 
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard

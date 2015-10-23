@@ -237,8 +237,17 @@ var ImgCache = {
         }
     };
     DomHelpers.getBackgroundImage = function (element) {
-        if (ImgCache.jQuery || ImgCache.jQueryLite) {
+
+        if (ImgCache.jQuery) {
             return element.attr('data-old-background') ? "url(" + element.attr('data-old-background') + ")" : element.css('background-image');
+        } else if (ImgCache.jQueryLite) {
+            
+            var style = window.getComputedStyle(element[0], null);
+            if (!style) {
+                return;
+            }
+            return element[0].getAttribute("data-old-background") ? "url(" + element[0].getAttribute("data-old-background") + ")" : style.backgroundImage;
+
         } else {
             var style = window.getComputedStyle(element, null);
             if (!style) {

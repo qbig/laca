@@ -27,9 +27,6 @@ angular.module('starter.controllers', [])
 
       $cordovaFileTransfer.download(_bg, window.cordova.file.dataDirectory + "background.jpg", {}, true)
       .then(function(result) {
-
-
-
       }, function(err) {
         // Error
         $scope.showAlert("Error:" + JSON.stringify(err));
@@ -41,7 +38,6 @@ angular.module('starter.controllers', [])
         *
       });
     }
-
   });*/
   
   ////////////////////////////////////////////////
