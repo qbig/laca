@@ -1,5 +1,17 @@
 // Ionic Starter App
 
+/*
+ImgCache.options.debug = false;
+ImgCache.options.usePersistentCache = true;
+ImgCache.options.chromeQuota = 5*1024*1024; 
+
+ImgCache.init(function() {
+    console.log('ImgCache init: success!');
+}, function(){
+    console.error('ImgCache init: error! Check the log for errors');
+});  
+*/
+
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
@@ -10,7 +22,8 @@ angular.module('starter', ['ionic',
   'starter.controllers',
   'starter.directives',
   'starter.services', 
-  'LocalForageModule'
+  'LocalForageModule',
+  'imagenie'
   ])
 
 .constant('ApiEndpoint', {
@@ -19,10 +32,6 @@ angular.module('starter', ['ionic',
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
-    ImgCache.options.debug = false;
-    ImgCache.options.usePersistentCache = true;
-    ImgCache.options.chromeQuota = 50*1024*1024;     
-
     // Hide the accessory bar by default (remove this to show the accessory bar above the keyboard
     // for form inputs)
     if (window.cordova && window.cordova.plugins.Keyboard) {
@@ -34,12 +43,6 @@ angular.module('starter', ['ionic',
       // org.apache.cordova.statusbar required
       StatusBar.styleDefault();
     }
-
-    ImgCache.init(function() {
-        console.log('ImgCache init: success!');
-    }, function(){
-        console.error('ImgCache init: error! Check the log for errors');
-    });
   });
 })
 

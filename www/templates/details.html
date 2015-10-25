@@ -1,5 +1,6 @@
 <ion-view view-title="La Casa Cubana">
-	<ion-content class="no-header" scroll="false" cache-background>
+	<ion-content class="no-header" scroll="false" imagenie="http://googledrive.com/host/0B4eZhD1V1_ZAa1RvbGlhYzNYaFk/background.jpg">
+	<!-- cache-background -->
 	<br/>
 	<ion-slide-box 
 		show-pager="false"
@@ -19,7 +20,7 @@
 
 					<div class="item item-subcategory sub-detail-image" 
 						ng-if="types[category] !== undefined">
-						<img class="full-image" ng-cache ng-src="{{product.photo}}" data-offline>
+						<img class="full-image" imagenie="{{product.photo}}">
 					</div>
 
 					<!-- item-thumbnail-left -->

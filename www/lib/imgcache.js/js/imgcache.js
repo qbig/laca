@@ -237,10 +237,9 @@ var ImgCache = {
         }
     };
     DomHelpers.getBackgroundImage = function (element) {
-
-        if (ImgCache.jQuery) {
+        if (ImgCache.jQuery || ImgCache.jQueryLite || element.attr !== undefined) {
             return element.attr('data-old-background') ? "url(" + element.attr('data-old-background') + ")" : element.css('background-image');
-        } else if (ImgCache.jQueryLite) {
+        } /*else if (ImgCache.jQueryLite) {
             
             var style = window.getComputedStyle(element[0], null);
             if (!style) {
@@ -248,7 +247,7 @@ var ImgCache = {
             }
             return element[0].getAttribute("data-old-background") ? "url(" + element[0].getAttribute("data-old-background") + ")" : style.backgroundImage;
 
-        } else {
+        }*/ else {
             var style = window.getComputedStyle(element, null);
             if (!style) {
                 return;

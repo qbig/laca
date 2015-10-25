@@ -1,6 +1,7 @@
 <ion-view view-title="La Casa Cubana" hide-back-button="true">
 
-	<ion-content class="no-header" cache-background>
+	<ion-content class="no-header" imagenie="http://googledrive.com/host/0B4eZhD1V1_ZAa1RvbGlhYzNYaFk/background.jpg">
+	<!-- cache-background -->
 
 		<div class="list pad-list">
 
@@ -8,7 +9,7 @@
 		    	href="#/app/details/{{category.title}}"
 		    	collection-repeat="category in categories | orderBy:'title'">
 		      
-		      <img ng-cache ng-src="http://googledrive.com/host/0B4eZhD1V1_ZAa1RvbGlhYzNYaFk/{{category.title}}.jpg" data-offline>
+		      <img imagenie="http://googledrive.com/host/0B4eZhD1V1_ZAa1RvbGlhYzNYaFk/{{category.title}}.jpg">
 		      <h2><strong>{{category.title}}</strong></h2>
 		    </a>
 

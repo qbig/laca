@@ -9,6 +9,7 @@
     "angular-filter": "~0.5.7",
     "angular-localforage": "~1.2.3",
     "imgcache.js": "~0.7.6",
-    "imagesloaded": "~3.1.8"
+    "jquery": "~2.1.4",
+    "imagenie": "https://github.com/saniyusuf/imagenie.git"
   }
 }

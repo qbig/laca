@@ -14,22 +14,21 @@ angular.module('starter.directives', ['ionic'])
     };
 })
 
-.directive('cacheBackground', function($timeout) {
+.directive('cacheBackground', function() {
     return {
         restrict: 'A',
-        link: function(scope, el, attrs) {      
-
-        	$timeout(function() {
-        		ImgCache.isBackgroundCached(el, function(path, success) {
+        link: function(scope, el, attrs) {  
+        	if (ImgCache.ready) {
+				ImgCache.isBackgroundCached(el, function(path, success) {
 		            if (success) {
 		                ImgCache.useCachedBackground(el);
 		            } else { 
 		                ImgCache.cacheBackground(el, function() {
-		                    ImgCache.useCachedBackground(el);
+		                    //ImgCache.useCachedBackground(el);
 		                });
 		            }
 		        });
-        	}, 200);
+			}
         }
     };
 })
@@ -39,17 +38,22 @@ angular.module('starter.directives', ['ionic'])
     return {
         restrict: 'A',
         link: function(scope, el, attrs) {
-            attrs.$observe('ngSrc', function(src) {
-                ImgCache.isCached(src, function(path, success) {
-                    if (success) {
-                        ImgCache.useCachedFile(el);
-                    } else {
-                        ImgCache.cacheFile(src, function() {
-                            ImgCache.useCachedFile(el);
-                        });
-                    }
-                });
-            });
+        	if (ImgCache.ready) {
+	            attrs.$observe('ngSrc', function(src) {
+
+	            	//src = src.replace(/\s/g, "-"); 
+
+	                ImgCache.isCached(src, function(path, success) {
+	                    if (success) {
+	                        ImgCache.useCachedFile(el);
+	                    } else {
+	                        ImgCache.cacheFile(src, function() {
+	                            //ImgCache.useCachedFile(el);
+	                        });
+	                    }
+	                });
+	            });
+	        }
         }
     };
 })

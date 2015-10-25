@@ -7722,8 +7722,7 @@ a.button {
   padding-top: 44px; }
 
 .scroll-content {
-  background-image: url(http://googledrive.com/host/0B4eZhD1V1_ZAa1RvbGlhYzNYaFk/background.jpg);
-  /* ../img/background.jpg); */ }
+  background-image: url(../img/background.jpg); }
 
 .bg-top {
   top: 0px;
