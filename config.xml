@@ -20,6 +20,7 @@
   <preference name="FadeSplashScreen" value="false" />
   <preference name="SplashScreen" value="none"/>
   <preference name="SplashScreenDelay" value="3000"/>
+  <preference name="orientation" value="portrait" />
   <feature name="StatusBar">
     <param name="ios-package" value="CDVStatusBar" onload="true"/>
   </feature>
