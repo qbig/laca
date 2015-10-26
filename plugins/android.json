@@ -9,6 +9,10 @@
                 "parents": {
                     "/*": [
                         {
+                            "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"io.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"Device\"><param name=\"android-package\" value=\"org.apache.cordova.device.Device\" /></feature>",
                             "count": 1
                         },
@@ -22,10 +26,6 @@
                         },
                         {
                             "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Keyboard\"><param name=\"android-package\" value=\"io.ionic.keyboard.IonicKeyboard\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
                         {
@@ -62,6 +62,9 @@
         }
     },
     "installed_plugins": {
+        "ionic-plugin-keyboard": {
+            "PACKAGE_NAME": "com.ionicframework.lacasacubana285447"
+        },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.ionicframework.lacasacubana285447"
         },
@@ -75,9 +78,6 @@
             "PACKAGE_NAME": "com.ionicframework.lacasacubana285447"
         },
         "cordova-plugin-whitelist": {
-            "PACKAGE_NAME": "com.ionicframework.lacasacubana285447"
-        },
-        "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.lacasacubana285447"
         },
         "cordova-plugin-file": {
