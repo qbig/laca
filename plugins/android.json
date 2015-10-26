@@ -17,15 +17,15 @@
                             "count": 1
                         },
                         {
+                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
+                            "count": 1
+                        },
+                        {
                             "xml": "<feature name=\"SplashScreen\"><param name=\"android-package\" value=\"org.apache.cordova.splashscreen.SplashScreen\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
                         {
                             "xml": "<feature name=\"StatusBar\"><param name=\"android-package\" value=\"org.apache.cordova.statusbar.StatusBar\" /><param name=\"onload\" value=\"true\" /></feature>",
-                            "count": 1
-                        },
-                        {
-                            "xml": "<feature name=\"Whitelist\"><param name=\"android-package\" value=\"org.apache.cordova.whitelist.WhitelistPlugin\" /><param name=\"onload\" value=\"true\" /></feature>",
                             "count": 1
                         },
                         {
@@ -62,13 +62,13 @@
         }
     },
     "installed_plugins": {
-        "ionic-plugin-keyboard": {
+        "cordova-plugin-device": {
             "PACKAGE_NAME": "com.ionicframework.lacasacubana285447"
         },
         "cordova-plugin-console": {
             "PACKAGE_NAME": "com.ionicframework.lacasacubana285447"
         },
-        "cordova-plugin-device": {
+        "cordova-plugin-whitelist": {
             "PACKAGE_NAME": "com.ionicframework.lacasacubana285447"
         },
         "cordova-plugin-splashscreen": {
@@ -77,7 +77,7 @@
         "cordova-plugin-statusbar": {
             "PACKAGE_NAME": "com.ionicframework.lacasacubana285447"
         },
-        "cordova-plugin-whitelist": {
+        "ionic-plugin-keyboard": {
             "PACKAGE_NAME": "com.ionicframework.lacasacubana285447"
         },
         "cordova-plugin-file": {

@@ -27,6 +27,9 @@
         var ImagenieUtil = {};
 
         ImagenieUtil.getImageBase64String = function (url, outputFormat) {
+            
+            outputFormat = typeof outputFormat !== 'undefined' ? outputFormat : "image/jpeg";
+
             var imageBase64StringPromise = $q.defer();
 
             var canvas = document.createElement('CANVAS'),
@@ -38,7 +41,7 @@
                 canvas.height = img.height;
                 canvas.width = img.width;
                 ctx.drawImage(img, 0, 0);
-                dataURL = canvas.toDataURL(outputFormat);
+                dataURL = canvas.toDataURL(outputFormat, 0.5);
                 canvas = null;
                 imageBase64StringPromise.resolve(dataURL);
             };
@@ -46,6 +49,7 @@
               imageBase64StringPromise.reject(url);
             };
             img.src = url;
+
             return imageBase64StringPromise.promise;
         };
 
@@ -120,6 +124,15 @@
                                     ImagenieUtil.setImageToElement(element, localImageSuccessData);
 
                                 }else{
+
+                                    ImagenieUtil.getImageBase64String(imageSrc)
+                                    .then(function (imageBase64String) {
+                                        imagenieLocalForageInstance.setItem(encodeURIComponent(imageSrc), imageBase64String);
+                                        ImagenieUtil.setImageToElement(element, imageBase64String);
+
+                                    });
+                                    
+                                    /*
                                     var newImage = angular.element('<img />');
                                     newImage.bind('load', function () {
                                         ImagenieUtil.getImageBase64String(imageSrc)
@@ -130,11 +143,18 @@
                                             });
                                     });
 
-                                    newImage.attr('src', imageSrc);
+                                    newImage.attr('src', imageSrc);*/
                                 }
 
                             }, function () {
 
+                                ImagenieUtil.getImageBase64String(imageSrc)
+                                .then(function (imageBase64String) {
+                                    imagenieLocalForageInstance.setItem(encodeURIComponent(imageSrc), imageBase64String);
+                                    ImagenieUtil.setImageToElement(element, imageBase64String);
+                                });
+
+                                /*
                                 var newImage = angular.element('<img />');
                                 newImage.bind('load', function () {
                                     ImagenieUtil.getImageBase64String(imageSrc)
@@ -145,6 +165,7 @@
                                 });
 
                                 newImage.attr('src', imageSrc);
+                                */
                             });
                     }
                 });

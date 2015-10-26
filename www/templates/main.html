@@ -7,9 +7,9 @@
 
 		    <a class="item item-thumbnail-left item-category" 
 		    	href="#/app/details/{{category.title}}"
-		    	collection-repeat="category in categories | orderBy:'title'">
+		    	ng-repeat="category in categories | orderBy:'title'">
 		      
-		      <img imagenie="http://googledrive.com/host/0B4eZhD1V1_ZAa1RvbGlhYzNYaFk/{{category.title}}.jpg">
+		      <img imagenie="http://googledrive.com/host/0B4eZhD1V1_ZAa1RvbGlhYzNYaFk/{{category.title}}.jpg" width="88" height="88">
 		      <h2><strong>{{category.title}}</strong></h2>
 		    </a>
 
