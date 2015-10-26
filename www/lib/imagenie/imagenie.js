@@ -28,6 +28,8 @@
 
         ImagenieUtil.getImageBase64String = function (url, outputFormat) {
             
+            outputFormat = typeof outputFormat !== 'undefined' ? outputFormat : "image/jpeg";
+
             var imageBase64StringPromise = $q.defer();
 
             var canvas = document.createElement('CANVAS'),
@@ -39,7 +41,7 @@
                 canvas.height = img.height;
                 canvas.width = img.width;
                 ctx.drawImage(img, 0, 0);
-                dataURL = canvas.toDataURL(outputFormat);
+                dataURL = canvas.toDataURL(outputFormat, 0.5);
                 canvas = null;
                 imageBase64StringPromise.resolve(dataURL);
             };
