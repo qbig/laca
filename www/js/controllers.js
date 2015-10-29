@@ -147,10 +147,10 @@ angular.module('starter.controllers', [])
     $scope.category = $stateParams.category;
 
     $scope.types = {
-      "Appertizers": 10,
-      "Main": 10,
-      "Desserts": 10,
-      "default": 10
+      "Appertizers": 9,
+      "Main": 9,
+      "Desserts": 9,
+      "default": 9
     };
 
     //////////////////////////////////////////////////////////////////
@@ -166,7 +166,7 @@ angular.module('starter.controllers', [])
     $localForage.getItem('LCCCategories:' + $scope.category).then(function(scdata) {
       if (scdata) {
         $scope.products = JSON.parse(scdata);
-        
+
         for (var i = 0; i < stepSlides; i++) {
           if ($scope.products[i] !== undefined) {
             $scope.slides.push($scope.products[i]);
