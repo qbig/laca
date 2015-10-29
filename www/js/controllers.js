@@ -3,8 +3,8 @@
 angular.module('starter.controllers', [])
 
 .controller('AppCtrl', function(
-    $rootScope, 
-    $scope, 
+    $rootScope,
+    $scope,
     $state,
     $timeout,
     $ionicPlatform,
@@ -18,7 +18,7 @@ angular.module('starter.controllers', [])
   // listen for the $ionicView.enter event:
   //$scope.$on('$ionicView.enter', function(e) {
   //});
-  
+
   /*
   $ionicPlatform.ready(function() {
 
@@ -39,7 +39,7 @@ angular.module('starter.controllers', [])
       });
     }
   });*/
-  
+
   ////////////////////////////////////////////////
 
   // Alert dialog
@@ -75,16 +75,16 @@ angular.module('starter.controllers', [])
 //////////////////////////////////////////////////////////////////
 
 .controller('SplashScreenCtrl', function (
-  $rootScope, 
-  $scope, 
+  $rootScope,
+  $scope,
   $timeout) {
 })
 
 //////////////////////////////////////////////////////////////////
 
 .controller('MainCtrl', function (
-  $rootScope, 
-  $scope, 
+  $rootScope,
+  $scope,
   $timeout,
   $localForage,
   LCCService) {
@@ -103,27 +103,27 @@ angular.module('starter.controllers', [])
           });
 
           LCCService.get('/ad67ffe2').then(function (data) {
-            Array.prototype.push.apply($scope.categories, data);     
+            Array.prototype.push.apply($scope.categories, data);
           });
 
           LCCService.get('/ea4b12d2').then(function (data) {
-            Array.prototype.push.apply($scope.categories, data);      
+            Array.prototype.push.apply($scope.categories, data);
           });
 
           LCCService.get('/b01ca536').then(function (data) {
-            Array.prototype.push.apply($scope.categories, data);     
+            Array.prototype.push.apply($scope.categories, data);
           });
 
           LCCService.get('/d7d1f5a7').then(function (data) {
             $rootScope.$broadcast('loading:hide');
-            Array.prototype.push.apply($scope.categories, data);       
+            Array.prototype.push.apply($scope.categories, data);
           });
 
         }else{
           $rootScope.$broadcast('loading:hide');
           $scope.categories = JSON.parse(localdata);
         }
-    });  
+    });
 
     //////////////////////////////////////////////////////////////////
 })
@@ -131,9 +131,9 @@ angular.module('starter.controllers', [])
 //////////////////////////////////////////////////////////////////
 
 .controller('DetailsCtrl', function (
-  $rootScope, 
+  $rootScope,
   $scope,
-  $stateParams, 
+  $stateParams,
   $timeout,
   $localForage,
   LCCService,
@@ -147,9 +147,9 @@ angular.module('starter.controllers', [])
     $scope.category = $stateParams.category;
 
     $scope.types = {
-      "Appertizers": 3,
-      "Main": 3,
-      "Desserts": 3,
+      "Appertizers": 10,
+      "Main": 10,
+      "Desserts": 10,
       "default": 10
     };
 
@@ -162,13 +162,12 @@ angular.module('starter.controllers', [])
     }, 300);
 
     //////////////////////////////////////////////////////////////////
-        
+
     $localForage.getItem('LCCCategories:' + $scope.category).then(function(scdata) {
       if (scdata) {
-        
         $scope.products = JSON.parse(scdata);
-
-        for (var i = 0; i < stepSlides; i++) { 
+        
+        for (var i = 0; i < stepSlides; i++) {
           if ($scope.products[i] !== undefined) {
             $scope.slides.push($scope.products[i]);
           }
@@ -176,10 +175,10 @@ angular.module('starter.controllers', [])
       }else {
 
         $localForage.getItem('LCCData').then(function(localdata) {
-            
+
             if (localdata !== null) {
               var sc = LCCService.filterBySubCategory(JSON.parse(localdata), $scope.category);
-              
+
               if ($scope.types[$scope.category] !== undefined) {
                 sc = LCCService.chunkBy(sc, $scope.types[$scope.category]);
               }else{
@@ -188,12 +187,12 @@ angular.module('starter.controllers', [])
 
               $scope.products = sc;
 
-              for (var i = 0; i < stepSlides; i++) { 
+              for (var i = 0; i < stepSlides; i++) {
                 if ($scope.products[i] !== undefined) {
                   $scope.slides.push($scope.products[i]);
                 }
               }
-            
+
               $localForage.setItem('LCCCategories:' + $scope.category, JSON.stringify(sc));
 
             }else{
@@ -202,7 +201,7 @@ angular.module('starter.controllers', [])
         });
       }
     });
-    
+
     //////////////////////////////////////////////////////////////////
 
     $scope.slideHasChanged = function(index) {
@@ -211,13 +210,13 @@ angular.module('starter.controllers', [])
         var i = $ionicSlideBoxDelegate.slidesCount();
 
         if (i > $scope.products.length-1) {
-          return;   
+          return;
         }
 
         $scope.slides.push($scope.products[i]);
         $ionicSlideBoxDelegate.update();
       }, 50);
-      
+
     };
 
     $scope.checkSubCat = function (subcat) {

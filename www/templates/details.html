@@ -1,49 +1,47 @@
 <ion-view view-title="La Casa Cubana">
 	<ion-content class="no-header" scroll="false" imagenie="http://googledrive.com/host/0B4eZhD1V1_ZAa1RvbGlhYzNYaFk/background.jpg">
-	<!-- cache-background -->
-	<br/>
-	<ion-slide-box 
-		show-pager="false"
-		does-continue="true" 
-		on-slide-changed="slideHasChanged($index)"
-		ng-if="products.length">
+		<!-- cache-background -->
+		<br/>
+		<ion-slide-box show-pager="false" does-continue="true" on-slide-changed="slideHasChanged($index)" ng-if="products.length">
 
-          <ion-slide ng-repeat="prod in slides">
-            
-            <div class="list">
+			<ion-slide ng-repeat="prod in slides">
 
-				<div ng-repeat="product in prod">
+				<div class="list">
 
-					<div class="item item-divider item-subcategory" ng-if="checkSubCat(product.subcat1);">
-						<h1>{{product.subcat1}}</h1>
-					</div>
+					<div ng-repeat="product in prod">
+						<div class="item item-divider item-subcategory" ng-if="checkSubCat(product.subcat1);">
+							<h1>{{product.subcat1}}</h1>
+						</div>
 
-					<div class="item item-subcategory sub-detail-image" 
-						ng-if="types[category] !== undefined">
-						<img class="full-image" imagenie="{{product.photo}}" width="558" height="218">
-					</div>
+						<div class="item item-subcategory sub-detail-image" ng-if="types[category] !== undefined">
+							<img class="full-image" imagenie="{{product.photo}}" width="558" height="218">
+						</div>
 
-					<!-- item-thumbnail-left -->
-				    <div class="item item-text-wrap item-subcategory item-icon-right" 
-				    	href="#">
-				      
-				      <!--<img ng-src="{{product.photo}}">-->
-				      <h2><strong>{{product.title}}</strong></h2>
-				      <h3><strong>{{product.year !== "" && product.year !== undefined ? "Year: " + product.year:""}}</strong></h3>
-				      <h3><strong>{{ product.volume !== "" && product.volume !== undefined ? "Volume: " + product.volume:"" }}</strong></h3>
+						<!-- item-thumbnail-left -->
+						<div class="item item-text-wrap item-subcategory item-icon-right" href="#">
 
-					  <i class="icon item-price">
-					  	<h2><strong>{{product.price}}</strong></h2>
+							<!--<img ng-src="{{product.photo}}">-->
+							<h2>
+								<strong style="font-size:1.2em; margin-right:10px">{{product.title}}</strong>
+							</h2>
+							<h3>
+								<strong>{{product.year !== "" && product.year !== undefined ? "Year: " + product.year:""}}</strong>
+							</h3>
+							<h3>
+								<strong>{{ product.volume !== "" && product.volume !== undefined ? "Volume: " + product.volume:"" }}</strong>
+							</h3>
+
+							<i class="icon item-price">
+					  	<h2><strong style="font-size:1.1em">{{product.price}}</strong></h2>
 					  </i>
-				    </div>
+						</div>
 
+					</div>
 				</div>
+				<br/>
+			</ion-slide>
 
-			</div>
-			<br/>
-          </ion-slide>
-          
-    </ion-slide-box>
+		</ion-slide-box>
 
-  	</ion-content>
+	</ion-content>
 </ion-view>

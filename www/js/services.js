@@ -26,9 +26,9 @@ angular.module('starter.services', [])
 
 	var filterByUnique = function(arr, key, flag) {
 	    var unique = [], tmp = [];
-	    for (var i = 0; i < arr.length; i++) { 
+	    for (var i = 0; i < arr.length; i++) {
 	        if (arr[i][key] === "") continue;
-	      
+
 	        var current = arr[i][key];
 	        if (tmp.indexOf(current) < 0) {
 	          tmp.push(current);
@@ -85,19 +85,20 @@ angular.module('starter.services', [])
 		filterBySubCategory: function(arr, cat) {
 
 	        var t, tmp = [];
-	        for (var i = arr.length-1; i > -1; i--) { 
-	            
+	        //for (var i = arr.length-1; i > -1; i--) {
+          for (var i = 0; i < arr.length; i++) {
+
 	            if (arr[i]["Main Cat"] === cat) {
 
 	            	if (arr[i]["Sub-Cat 1"] === "") arr[i]["Sub-Cat 1"] = "Others";
 
-	            	tmp.push({title: arr[i]["Item Description"], 
-		                year: arr[i]["Vintage/Year"], 
-		                price: matchKey(arr[i], "price"), 
-		                volume: arr[i]["Volume"], 
-		                subcat1: arr[i]["Sub-Cat 1"], 
+	            	tmp.push({title: arr[i]["Item Description"],
+		                year: arr[i]["Vintage/Year"],
+		                price: matchKey(arr[i], "price"),
+		                volume: arr[i]["Volume"],
+		                subcat1: arr[i]["Sub-Cat 1"],
 		                subcat2: arr[i]["Sub-Cat 2"],
-		                photo: arr[i]["image"] 
+		                photo: arr[i]["image"]
 		            });
 	            }
 	        }
