@@ -8,17 +8,13 @@
 
 				<div class="list">
 
-					<div ng-repeat="product in prod">
+					<div style="height:90px"ng-repeat="product in prod">
 						<div class="item item-divider item-subcategory" ng-if="checkSubCat(product.subcat1);">
 							<h1>{{product.subcat1}}</h1>
 						</div>
 
-						<div class="item item-subcategory sub-detail-image" ng-if="types[category] !== undefined">
-							<img class="full-image" imagenie="{{product.photo}}" width="558" height="218">
-						</div>
-
 						<!-- item-thumbnail-left -->
-						<div class="item item-text-wrap item-subcategory item-icon-right" href="#">
+						<div class="item item-text-wrap item-subcategory item-icon-right" ng-if="product.title!== ''" href="#">
 
 							<!--<img ng-src="{{product.photo}}">-->
 							<h2>
@@ -26,9 +22,10 @@
 							</h2>
 							<h3>
 								<strong>{{product.year !== "" && product.year !== undefined ? "Year: " + product.year:""}}</strong>
+								{{product.subcat2}}   {{product.volume}}
 							</h3>
 							<h3>
-								<strong>{{ product.volume !== "" && product.volume !== undefined ? "Volume: " + product.volume:"" }}</strong>
+
 							</h3>
 
 							<i class="icon item-price">

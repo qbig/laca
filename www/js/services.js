@@ -92,7 +92,8 @@ angular.module('starter.services', [])
 
 	            	if (arr[i]["Sub-Cat 1"] === "") arr[i]["Sub-Cat 1"] = "Others";
 
-	            	tmp.push({title: arr[i]["Item Description"],
+	            	tmp.push({
+                    title: arr[i]["Item Description"],
 		                year: arr[i]["Vintage/Year"],
 		                price: matchKey(arr[i], "price"),
 		                volume: arr[i]["Volume"],
