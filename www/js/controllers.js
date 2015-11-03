@@ -147,10 +147,10 @@ angular.module('starter.controllers', [])
     $scope.category = $stateParams.category;
 
     $scope.types = {
-      "Appertizers": 9,
-      "Main": 9,
-      "Desserts": 9,
-      "default": 9
+      "Appertizers": 8,
+      "Main": 8,
+      "Desserts": 8,
+      "default": 8
     };
 
     //////////////////////////////////////////////////////////////////
@@ -219,9 +219,9 @@ angular.module('starter.controllers', [])
 
     };
 
-    $scope.checkSubCat = function (subcat) {
+    $scope.checkSubCat = function (subcat, index) {
 
-      if (group !== subcat) {
+      if (group !== subcat || index === 0) {
         group = subcat;
         return true;
       }
